@@ -1,23 +1,20 @@
 <!DOCTYPE html>
-    <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-entity geometry="primitive: cylinder;" material="color:red" position="5 3 -4" scale="1 3 1" rotation="0 2 0"></a-entity>
+        <a-entity geometry="primitive: ring" material="color:black" position="0 3 -4" scale="1 1 1" rotation="0 2 0"></a-entity>
+        <a-entity geometry="primitive: icosahedron;" material="color:blue" position="-5 3 -4" scale="1 1 1" rotation="0 2 0"></a-entity>
 
-    </head>
-    <title>Pongase a jalar mijo</title>
-<!-- <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script> -->
-    <body>
-        <a-scene>
-            <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-        </a-scene>
-        <h1>Hola Mundo</h1>
-        <p style="font-size:15px; color:#258f8d">Cuando alguien se inicia en el estudio de cualquier lenguaje de programación, lo primero que se hace al introducir código es pedir a la máquina que muestre un mensaje simple en nuestros monitores; como ejemplo es tradición poner “Hola Mundo” (“hello, world”) y con ello verificamos que el lenguaje o sistema que estamos utilizando funciona correctamente. En equipos que no muestran texto se solía sustituir “Hola Mundo” por el encendido de un LED.</p>
-        <h2>¿Como surgio?</h2>
-        <p style="font-size:15px; color:#868f25">Todo comenzó en 1972, cuando un lenguaje llamado C fue creado por Dennis Ritchie en los laboratorios Bell. Ritchie escribió el famoso libro 'The C Programming Language' junto a Brian Kernighan, y ahí, ¡apareció por primera vez el programa 'Hello, World! '!</p>
-        <h3>¿Por qué es importante?</h3>
-        <p style="font-size:15px; color:#4d436a">
-            Cuando alguien se inicia en el estudio de cualquier lenguaje de programación, lo primero que se hace al introducir código es pedir a la máquina que muestre un mensaje simple en nuestros monitores; como ejemplo es tradición poner “Hola Mundo” (“hello, world”) y con ello verificamos que el lenguaje o sistema que estamos</p>
-            <img src="assets/hello_world.jpg">
-        <p>Creditos: Daniel X. O'Neil &#128511;</p>
-        <a href="https://www.youtube.com/watch?v=MXVefnYC6bY" title="Go to W3Schools HTML section">Visita un video relacionado al tema.</a>
-                    <!--Esto es un comentario-->
-    </body>
+        <a-text value="Bienvenid@" font="assets\fonts\custom-msdf.json" font-image="assets\fonts\custom.png" negate="false" color="#a37e7e" scale="3 3 1" position="-1 4 0"></a-text>
+        <a-entity environment="preset: japan; dressingAmount: 1"></a-entity>
+    </a-scene>
+</body>
 </html>

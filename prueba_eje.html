@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Combinada</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script>
+        // Componente personalizado para Play/Pause
+        AFRAME.registerComponent('play-pause', {
+            init: function () {
+                var myVideo = document.querySelector('#persona'); // Selecciona el video
+                var videoControls = document.querySelector('#videoControls'); // Selecciona el botón
+
+                // Alterna entre reproducir y pausar el video
+                this.el.addEventListener('click', function () {
+                    if (myVideo.paused) {
+                        myVideo.play(); // Reproduce el video
+                        videoControls.setAttribute('src', '#pausa'); // Cambia a la imagen de pausa
+                    } else {
+                        myVideo.pause(); // Pausa el video
+                        videoControls.setAttribute('src', '#play'); // Cambia a la imagen de play
+                    }
+                });
+            }
+        });
+
+        // Control de cámara con gamepad
+        !--window.addEventListener('DOMContentLoaded', () => {
+            const camera = document.getElementById('my-camera');
+            const movementSpeed = 0.1; // Velocidad de movimiento
+            const rotationSpeed = 2; // Velocidad de rotación
+
+            function updateGamepad() {
+                const gamepad = navigator.getGamepads()[0]; // Obtener el primer control conectado
+                if (gamepad) {
+                    const leftAxisX = gamepad.axes[0]; // Palanca izquierda (eje X)
+                    const leftAxisY = gamepad.axes[1]; // Palanca izquierda (eje Y)
+                    const rightAxisX = gamepad.axes[2]; // Palanca derecha (eje X)
+                    const rightAxisY = gamepad.axes[3]; // Palanca derecha (eje Y)
+
+                    let position = camera.object3D.position;
+                    let rotation = camera.object3D.rotation;
+
+                    // Movimiento adelante/atrás ajustado a la rotación
+                    if (Math.abs(leftAxisY) > 0.1) {
+                        position.z += leftAxisY * movementSpeed * Math.cos(rotation.y);
+                        position.x += leftAxisY * movementSpeed * Math.sin(rotation.y);
+                    }
+
+                    // Movimiento lateral (izquierda/derecha) ajustado a la rotación
+                    if (Math.abs(leftAxisX) > 0.1) {
+                        position.z -= leftAxisX * movementSpeed * Math.sin(rotation.y);
+                        position.x += leftAxisX * movementSpeed * Math.cos(rotation.y);
+                    }
+
+                    // Rotación horizontal con la palanca derecha
+                    if (Math.abs(rightAxisX) > 0.1) {
+                        rotation.y -= rightAxisX * rotationSpeed * (Math.PI / 180); // Rotación horizontal
+                    }
+
+                    // Rotación vertical con la palanca derecha
+                    if (Math.abs(rightAxisY) > 0.1) {
+                        rotation.x -= rightAxisY * rotationSpeed * (Math.PI / 180); // Rotación vertical
+                        // Limitar el rango de rotación vertical
+                        rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, rotation.x));
+                    }
+                }
+                requestAnimationFrame(updateGamepad);
+            }
+
+            requestAnimationFrame(updateGamepad);
+        });
+    </script>
+
+<script>
+    // Componente personalizado para Play/Pause 2
+    AFRAME.registerComponent('play-pause2', {
+        init: function () {
+            var myVideo = document.querySelector('#persona_saul'); // Selecciona el video
+            var videoControls = document.querySelector('#videoControls2'); // Selecciona el botón
+
+            // Alterna entre reproducir y pausar el video
+            this.el.addEventListener('click', function () {
+                if (myVideo.paused) {
+                    myVideo.play(); // Reproduce el video
+                    videoControls.setAttribute('src', '#pausa'); // Cambia a la imagen de pausa
+                } else {
+                    myVideo.pause(); // Pausa el video
+                    videoControls.setAttribute('src', '#play'); // Cambia a la imagen de play
+                }
+            });
+        }
+    });
+    </script>
+    
+
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="play" src="assets/botonplaypersona.png">
+            <img id="pausa" src="assets/botonpausapersona.png">
+            <video id="reloj" src="assets/videos/reloj.mp4" muted autoplay loop></video>
+            <a-asset-item id="cartel" src="assets/modelo3d/cartel.glb"></a-asset-item>
+            <a-asset-item id="tv" src="assets/modelo3d/TV.glb"></a-asset-item>
+            <a-asset-item id="mesa_escolar" src="assets/modelo3d/mesa_escolar.glb"></a-asset-item>
+            <a-asset-item id="curaduria" src="assets/modelo3d/curaduria.glb"></a-asset-item>
+            <video id="persona_saul" src="assets/videos/persona_saul.mp4" muted autoplay loop></video>
+            <video id="persona" src="assets/videos/persona.mp4" muted autoplay loop></video>
+        </a-assets>
+
+        <!-- Cámara controlada -->
+        <a-entity id="my-camera" camera position="0 2 25">
+            <a-cursor color="black" fuse="true" fuse-timeout="1500"></a-cursor>
+        </a-entity>
+
+        <a-video src="#reloj" width="2" height="2" position="1 5 5"></a-video>
+
+        <a-gltf-model src="#mesa_escolar" position="-5.292 0.34576 -5.964" scale="0.56738 0.56738 0.56738" rotation="0 -142.165 0" gltf-model="assets/modelo3d/mesa_escolar.glb"></a-gltf-model>
+
+        <a-gltf-model src="#tv" position="-4.89231 1.89333 -6.63512" scale="0.40398 0.40398 0.40398" rotation="0 -52.824416879881376 0" gltf-model="assets/modelo3d/TV.glb"></a-gltf-model>
+
+        <a-gltf-model src="#curaduria" 
+                      position="1.74866 0.09802 0" 
+                      scale="4 4 4" rotation="0 -90 0">
+        </a-gltf-model>
+
+        <a-gltf-model src="#cartel" 
+                      position="-1.171 6.16 11.46482" 
+                      scale="1.09966 0.63704 3.42931" 
+                      rotation="0 0 0">
+        </a-gltf-model>
+
+        <a-image src="#makoto_yuki"  
+                 position="4.5 2 3" 
+                 scale="4 4 4" 
+                 rotation="0 90 0">
+        </a-image>
+
+        <a-entity environment="preset: japan; 
+                              dressingAmount: 1; 
+                              ground: flat; 
+                              groundColor: #445; 
+                              grid: cross" 
+                  scale="0.8 0.8 0.8" 
+                  position="-1.18 0 25">
+        </a-entity>
+        
+        <a-video src="#persona" autoplay="true" loop="true" position="-5.067 2.25518 -5.36059" scale="0.795 0.646 4" rotation="0.134 38.518 -0.331">
+        </a-video>
+        <a-video src="#persona_saul" autoplay="true" loop="true" position="5 5 5" scale="0.795 0.646 4" rotation="0.134 38.518 -0.331">
+        </a-video>
+        <!-- Botón de control -->
+         
+        <a-image id="videoControls" src="#play" position="-4 1 -5" scale="0.3 0.3 0.3" play-pause></a-image>
+        <a-image id="videoControls2" src="#play" position="5 5 5" scale="3 3 3" play-pause2></a-image>
+
+    </a-scene>
+</body>
+</html>

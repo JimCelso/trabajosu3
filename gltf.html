@@ -3,18 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archivo GLTF </title>
+    <title>Galería Virtual con Modelo GLTF</title>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 </head>
 <body>
     <a-scene>
         <a-assets>
-          <a-asset-item id="museito" src="assets/modelo3d/museito.glb"></a-asset-item>
+            <a-asset-item id="curaduria" src="assets/modelo3d/curaduria.glb"></a-asset-item>
         </a-assets>
-
-        <a-gltf-model src="#museito"></a-gltf-model>
-      
-        <a-gltf-model src="assets/modelo3d/museito.glb"></a-gltf-model>
-      </a-scene>
+        <a-gltf-model src="#curaduria" position="0 0 0" scale="1 1 1"></a-gltf-model>
+        <a-sky color="lightblue"></a-sky>
+        <a-entity camera id="my-camera" position="0 1.6 5"></a-entity>
+    </a-scene>
+    <script>
+        const camera = document.getElementById('my-camera');
+        const movementSpeed = 0.05;
+        const rotationSpeed = 2; 
+        function updateGamepad() {
+            const gamepad = navigator.getGamepads()[0]; 
+            if (gamepad) {
+                const leftAxisX = gamepad.axes[0];
+                const leftAxisY = gamepad.axes[1]; 
+                const rightAxisX = gamepad.axes[2];
+                if (Math.abs(leftAxisY) > 0.1) {
+                    const position = camera.getAttribute('position');
+                    position.z += leftAxisY * movementSpeed;
+                    camera.setAttribute('position', position);
+                }
+                if (Math.abs(leftAxisX) > 0.1) {
+                    const position = camera.getAttribute('position');
+                    position.x += leftAxisX * movementSpeed;
+                    camera.setAttribute('position', position);
+                }
+                if (Math.abs(rightAxisX) > 0.1) {
+                    const rotation = camera.getAttribute('rotation');
+                    rotation.y -= rightAxisX * rotationSpeed;
+                    camera.setAttribute('rotation', rotation);
+                }
+            }
+            requestAnimationFrame(updateGamepad); 
+        }
+        requestAnimationFrame(updateGamepad);
+    </script>
 </body>
 </html>
