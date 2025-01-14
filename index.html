@@ -12,6 +12,7 @@
     <a-scene>
         <a-assets>
             <video id="cargando" src="assets/video/load.mp4" autoplay loop></video>
+            <video id="doble_espada" src="assets/video/doble_espada.mp4" autoplay loop></video>
             <a-asset-item id="dragon" src="assets/modelo3d/alduin_dragon.glb"></a-asset-item>
             <a-sound src="assets/audio/sao.mp4" autoplay="true" position="0 2 5"></a-sound>
             </a-assets>
@@ -35,10 +36,11 @@
         </a-entity>
         <a-entity camera="" position="0 1.6 28.48776" wasd-controls="" rotation="3.0939720937064474 175.32508531003162 0" look-controls="" aframe-injected="" data-aframe-inspector-original-camera=""></a-entity>
 
-        <a-gltf-model src="#dragon" position="2.1571 4.47944 -8.39229" scale="0.007 0.007 0.007" rotation="-1.2421724998436248 -37.29840654742633 9.377027275111052" gltf-model="assets/modelo3d/alduin_dragon.glb"></a-gltf-model>
-        <!--videos-->
+        <a-gltf-model src="#dragon" position="-5.53975 5.73281 -8.392" scale="0.007 0.007 0.007" rotation="-1.8896148083414552 -54.36108968642225 -16.49774675299692" gltf-model="assets/modelo3d/alduin_dragon.glb"></a-gltf-model>        <!--videos-->
 
         <a-video src="#cargando"  height="20" width="20" position="0.62807 3.049 15.16842" scale="0.05921 0.05921 0.59203"></a-video>
+
+        <a-box depth="2" height="4" width="0.5"></a-box>
 
 
     </a-scene>
