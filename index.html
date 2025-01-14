@@ -16,8 +16,9 @@
     <a-scene>
         <a-assets>
             <video id="cargando" src="assets/video/load.mp4" autoplay loop></video>
-            <video id="doble_espada" src="assets/video/doble_espada.mp4" autoplay loop></video>
+            <video id="doble_espada" src="assets/video/doble_espada.mp4" muted autoplay loop></video>
             <a-asset-item id="dragon" src="assets/modelo3d/alduin_dragon.glb"></a-asset-item>
+            <img id="pared_roca" src="assets/pared_roca.jpg">
             <a-sound src="assets/audio/sao.mp4" autoplay="true" position="0 2 5"></a-sound>
             </a-assets>
 
@@ -44,7 +45,17 @@
 
         <a-video src="#cargando"  height="20" width="20" position="0.62807 3.049 15.16842" scale="0.05921 0.05921 0.59203"></a-video>
 
-        <a-box depth="2" height="4" width="0.5"></a-box>
+        <a-box src="assets/pared_roca.jpg" depth="2" height="4" width="0.5" material="color: #800040" position="0.58026 2.56609 -1.76356" scale="1.9136 1.45092 1"></a-box>
+        <a-box src="assets/pared_roca.jpg" depth="2" height="4" width="0.5" material="color: #6db7da" position="-0.45118 2.70179 -1.76356" scale="1.9136 1.45092 1"></a-box>
+        <a-box src="assets/pared_roca.jpg" depth="2" height="4" width="0.5" material="color: #8ec88a" position="0.28197 2.90285 -0.86623" scale="1.9136 1.48945 1"></a-box>
+        <a-box src="assets/pared_roca.jpg" depth="2" height="4" width="0.5" material="color: #7ead9c" position="-0.04976 2.90285 0" scale="1.9136 1.64381 1"></a-box>
+        <a-box src="assets/pared_roca.jpg" depth="2" height="4" width="0.5" material="color: #9b2fca" position="-0.26531 2.50689 0.5445" scale="1.9136 1.30741 1"></a-box>
+        <a-box src="assets/pared_roca.jpg" depth="2" height="4" width="0.5" material="color: #400040" position="0.24961 2.90285 -0.04937" scale="1.9136 1.45092 1"></a-box>
+        <a-box src="assets/pared_roca.jpg" depth="2" height="4" width="0.5" material="color: #eaf332" position="0.92862 1.97259 -0.17596" scale="1.9136 1.08855 1"></a-box>
+
+        <!-- Núcleo del Equilibrio -->
+        <a-sphere id="nucleo" position="0.092 9.21951 -1.11989" radius="0.3" color="#FF00FF" animation="dir: alternate; dur: 2000; loop: true; property: position; to: 0 3.5 -1.20" scale="2.013 2.013 2.013" anchored="" material="color: #1ae6a8">
+        </a-sphere>
 
     </a-scene>
 </body>
